@@ -1,2 +1,2 @@
 # merchant-guide
-Assessment project for OneSpark
+Assessment project for OneSpark.
