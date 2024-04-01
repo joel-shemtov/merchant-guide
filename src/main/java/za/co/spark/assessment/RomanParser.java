@@ -20,12 +20,12 @@ public class RomanParser {
 		private Roman(int value) {
 			this.value = value;
 		}
-
-		static final Set<String> letters = Stream.of(values())
-				.map(Roman::name)
-				.collect(Collectors.toSet());
 	}
-	
+
+	static final Set<String> romanLetters = Stream.of(Roman.values())
+			.map(Roman::name)
+			.collect(Collectors.toSet());
+
 	private static final Set<String> ILLEGAL_EXPRESSIONS = Set.of(
 			"IIII", 
 			"VV", 
@@ -51,14 +51,14 @@ public class RomanParser {
 			"DM"
 			/* Add more illegal expressions */
 			);
-	
+
 	public static void main(String...strings) {
 		System.out.println(parse("XCIX"));
 	}
 	
 	private static boolean certify(String roman) {
 		final boolean allLettersAreRoman = Stream.of(roman.split(""))
-			.allMatch(Roman.letters::contains);
+			.allMatch(romanLetters::contains);
 		if (!allLettersAreRoman) {
 			return false;
 		}
